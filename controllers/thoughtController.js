@@ -65,7 +65,7 @@ module.exports = {
             if (!thought) {
                 return res.status(404).json({ message: 'No thought found with this id!' });
             }
-            res.json(thought);
+            res.json({ message: 'Thought deleted!' });
         }
         catch (err) {
             console.log(err);
@@ -93,7 +93,7 @@ module.exports = {
     },
 
     // remove reaction
-    async removeReaction(req, res) {
+    async deleteReaction(req, res) {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.id },
@@ -103,7 +103,7 @@ module.exports = {
             if (!thought) {
                 return res.status(404).json({ message: 'No thought found with this id!' });
             }
-            res.json({ message: 'Reaction removed!' });
+            res.json({ message: 'Reaction deleted!' });
         }
         catch (err) {
             console.log(err);
