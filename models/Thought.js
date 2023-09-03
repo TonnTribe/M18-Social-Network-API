@@ -19,14 +19,12 @@ const reactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            // use a getter method to format the timestamp on query
-            get: (createdAtVal) => dateFormat(createdAtVal)
         }
     },
     {
         toJSON: {
             getters: true
-        }
+        },
     }
 );
 
@@ -41,8 +39,6 @@ const thoughtSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            // use a getter method to format the timestamp on query
-            get: (createdAtVal) => dateFormat(createdAtVal)
         },
         username: {
             type: String,
@@ -51,13 +47,6 @@ const thoughtSchema = new Schema(
         // use ReactionSchema to validate data for a reaction
         reactions: [reactionSchema]
     },
-    {
-        toJSON: {
-            virtuals: true,
-            getters: true
-        },
-        id: false
-    }
 );
 
 // get total count of reactions on retrieval
